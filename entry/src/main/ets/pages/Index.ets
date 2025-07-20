@@ -1,45 +1,36 @@
 /*
-let 创建变量
-string 字符串类型
-number 数值类型
-boolean 布尔类型
+* 容器组件 && 内容组件
+* 先使用容器组件进行布局
+* 再使用内容组件进行填充
+* (1) @Entry修饰的Component只能存在一个root组件
+* (2) 组件的属性`.属性(值)`
+*   手机端的width满屏为360,也可以写100%
+* (3) 常见的容器属性:
+*   .width() 参数：可以是数字，也可以是百分比
+*   .height() 参数：可以是数字，也可以是百分比
+*   .backgroundColor() 参数：可以是预定义颜色，也可以是十六进制代码
+* (4) 常见的文本属性:
+*   .fontSize 字体大小，数值，默认是fp
+*   .fontColor 字体颜色，
  * */
-let title: string = "title"
-console.log("title:", title)
-let number: number = 1001
-console.log("number:", number)
-let judge: boolean = true
-console.log("judge:", judge)
-
-/*
-数组类型
- * */
-let nums: number[] = [1, 2, 3]
-console.log("数组是:", nums)
-
 @Entry
 @Component
 struct Index {
-    @State message: string = 'XianZS';
-
-    // 构建组件
     build() {
-        RelativeContainer() {
-            // 组件的表述
-            Text(this.message)
-            // 组件的id
-                .id('HelloWorld')
-                .fontSize($r('app.float.page_text_font_size'))
-                .fontWeight(FontWeight.Bold)
-                .alignRules({
-                    center: { anchor: '__container__', align: VerticalAlign.Center },
-                    middle: { anchor: '__container__', align: HorizontalAlign.Center }
-                })
-                .onClick(() => {
-                    this.message = 'Welcome';
-                })
+        Column() {
+            Column() {
+                Text("=-1")
+                Text("=-2")
+                Text("=-3")
+            }.backgroundColor(Color.Orange)
+            .width("100%")
+            .height(100)
+
+            Row() {
+                Text("=-1")
+                Text("=-2")
+                Text("=-3")
+            }
         }
-        .height('100%')
-        .width('100%')
     }
 }
